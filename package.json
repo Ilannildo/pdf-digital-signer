@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A JavaScript PDF digital signer with certificate A1 ICP-Brasil",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -37,5 +38,15 @@
   "dependencies": {
     "node-forge": "^1.3.1",
     "png-js": "^1.0.0"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "dist/index.d.ts"
+      ]
+    }
   }
 }

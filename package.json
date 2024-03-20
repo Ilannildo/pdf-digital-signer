@@ -1,13 +1,13 @@
 {
   "name": "pdf-digital-signer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A JavaScript PDF digital signer with certificate A1 ICP-Brasil",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "publish": "npm run build && npm publish"
+    "publish": "npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",

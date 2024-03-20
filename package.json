@@ -1,6 +1,6 @@
 {
   "name": "pdf-digital-signer",
-  "version": "2.0.3",
+  "version": "2.0.0",
   "description": "A JavaScript PDF digital signer with certificate A1 ICP-Brasil",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

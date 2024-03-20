@@ -6,3 +6,8 @@ export type ISignPdf = {
   certPassword: string;
   signatureOptions: SignatureOptions;
 }
+
+export type IGetCertData = {
+  certBuffer: Buffer;
+  certPassword: string;
+}

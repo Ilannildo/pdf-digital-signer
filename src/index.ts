@@ -1,7 +1,11 @@
 import plainAddPlaceholder from "./pdf/node-signpdf/plain-add-placeholder";
-import { addSignatureToPdf, replaceByteRangeInPdf } from "./pdf/node-signpdf/sign";
+import {
+  addSignatureToPdf,
+  replaceByteRangeInPdf,
+} from "./pdf/node-signpdf/sign";
+import { getDataFromP12Cert } from "./signature/cert.util";
 import { getSignature } from "./signature/digital-signature.service";
-import { ISignPdf } from "./types";
+import { IGetCertData, ISignPdf } from "./types";
 
 export async function signPdf({
   pdfBuffer,
@@ -34,4 +38,12 @@ export async function signPdf({
   );
 
   return signedPdf;
+}
+
+export function getCertData({ certBuffer, certPassword }: IGetCertData) {
+  try {
+    return getDataFromP12Cert(certBuffer, certPassword);
+  } catch (error) {
+    return null;
+  }
 }

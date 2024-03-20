@@ -54,7 +54,7 @@ export const getOnlyRawSignature = (
   return rawSignature
 }
 
-const getKeyBags = (p12: forge.pkcs12.Pkcs12Pfx): forge.pkcs12.Bag[] => {
+export const getKeyBags = (p12: forge.pkcs12.Pkcs12Pfx): forge.pkcs12.Bag[] => {
   const keyBags = p12.getBags({ bagType: forge.pki.oids.pkcs8ShroudedKeyBag })[
     forge.pki.oids.pkcs8ShroudedKeyBag
   ]
@@ -66,7 +66,7 @@ const getKeyBags = (p12: forge.pkcs12.Pkcs12Pfx): forge.pkcs12.Bag[] => {
   return keyBags
 }
 
-const getPrivateKey = (keyBags: forge.pkcs12.Bag[]): forge.pki.PrivateKey => {
+export const getPrivateKey = (keyBags: forge.pkcs12.Bag[]): forge.pki.PrivateKey => {
   const privateKey: any = keyBags[0].key
 
   if (!privateKey) {
@@ -76,7 +76,7 @@ const getPrivateKey = (keyBags: forge.pkcs12.Bag[]): forge.pki.PrivateKey => {
   return privateKey
 }
 
-const getCertificate = (
+export const getCertificate = (
   p7: forge.pkcs7.PkcsSignedData,
   certBags: forge.pkcs12.Bag[],
   privateKey: forge.pki.PrivateKey,
@@ -99,7 +99,7 @@ const getCertificate = (
   return certificate
 }
 
-const getRawSignature = (p7: forge.pkcs7.PkcsSignedData, placeholderLength: number): string => {
+export const getRawSignature = (p7: forge.pkcs7.PkcsSignedData, placeholderLength: number): string => {
   const rawSignature = forge.asn1.toDer(p7.toAsn1()).getBytes()
 
   if (rawSignature.length * 2 > placeholderLength) {
@@ -123,7 +123,7 @@ export const getSignatureFromRawSignature = (
   return signature
 }
 
-const getSigner = (privateKey: any, certificate: forge.pki.Certificate): any => {
+export const getSigner = (privateKey: any, certificate: forge.pki.Certificate): any => {
   return {
     key: privateKey,
     certificate,
